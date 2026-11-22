@@ -1,37 +1,56 @@
-# Akilibots strategies
+<p align="center"><img src="https://raw.githubusercontent.com/akilibots/.github/main/assets/akilibots-icon.svg" width="144" alt="Akilibots"></p>
 
-A repository for contributed configuration examples for
-[Akilibots](https://github.com/akilibots). No strategy files or backtest engine
-are currently included here.
+# Welcome to akilibots-strategies!
 
-The bots are independent Python applications:
+[![Python 3.15.2](https://img.shields.io/badge/Python-3.15.2-6966FF?logo=python&logoColor=white)](https://www.python.org/downloads/)
+[![Telegram](https://img.shields.io/badge/Telegram-community-6966FF?logo=telegram&logoColor=white)](https://t.me/+9F0CZj8emLc2YTY0)
 
-- [Grid](https://github.com/akilibots/akili-grid): moving orders on a bounded grid.
-- [Martingale](https://github.com/akilibots/akili-martingale): explicit averaging entries and weighted take profit.
-- [OTO](https://github.com/akilibots/akili-oto): conditional order groups and loops.
-- [DCA](https://github.com/akilibots/akili-dca): fixed-quantity interval execution.
-- [TradingView](https://github.com/akilibots/akili-tradingview): authenticated webhook-driven orders.
-- [Binance grid](https://github.com/akilibots/akili-binance-grid): a moving two-order Spot grid.
+> **Updated 22 November 2026:** configuration guidance now matches the dYdX Chain and Binance Spot bots, with Python 3.15.2 Docker runtimes.
 
-The dYdX bots now target dYdX Chain. v3 credentials and state are incompatible.
-The Binance bot uses the supported modular Spot SDK and a configurable symbol.
-Docker runtimes use Python 3.15.2.
+Jambo! This is the place to share that extra tweak. **akilibots-strategies** is
+for community configuration examples for the [Akilibots](https://github.com/akilibots)
+family. No strategy files or backtesting engine are included yet.
 
-## Using a configuration
+## Pick your bot
 
-Start from the configuration shipped with the matching bot. For dYdX bots, edit
-`data/strategy.json` and set wallet credentials in `.env`, following that bot's
-README. The Binance grid is configured through environment variables. Do not copy
-one bot's configuration into a different bot without checking its schema.
+| Bot | What you configure |
+| --- | --- |
+| [Grid](https://github.com/akilibots/akili-grid) | Bounds, spacing and orders above and below the centre |
+| [Martingale](https://github.com/akilibots/akili-martingale) | Averaging entries, quantities and take-profit targets |
+| [OTO](https://github.com/akilibots/akili-oto) | Order groups, successor groups and loops |
+| [DCA](https://github.com/akilibots/akili-dca) | A fixed quantity and interval |
+| [TradingView](https://github.com/akilibots/akili-tradingview) | Alerts that trigger authenticated order requests |
+| [Binance grid](https://github.com/akilibots/akili-binance-grid) | A Spot market, grid spacing and inventory quantity |
 
-## Contributing
+## Use a configuration
 
-Submit configuration examples by pull request. Include the bot, network, market,
-quantity units and an explanation of the order sequence. Keep wallet mnemonics,
-API keys, webhook secrets and runtime state out of contributions.
+1. Clone the matching bot and start with its supplied example.
+2. For a dYdX bot, edit `data/strategy.json` and configure the Chain wallet in
+   `.env`. The Binance bot uses environment variables instead.
+3. Follow that bot's README for Docker setup and offline regression tests.
+4. Check the market, quantity units and order sequence before running it.
 
-Each executable bot contains Docker regression tests using simulated exchanges.
-These verify program behaviour, not historical strategy returns. Evaluate market
-behaviour separately; there is no supplied backtesting system.
+Configurations belong to a particular bot. Do not copy one into another bot
+without checking its fields. Legacy v3 credentials and state are incompatible
+with the Chain versions.
 
-Software and examples are supplied as is under the repository licence.
+## Share your own
+
+Send a [pull request](https://github.com/akilibots/akilibots-strategies/pulls) or
+open an [issue](https://github.com/akilibots/akilibots-strategies/issues/new).
+Include the bot, market, network, quantity units and an explanation of what should
+happen when an order fills. Leave out wallet mnemonics, API keys, webhook secrets
+and runtime state.
+
+The bots' Docker tests verify program behaviour. They do not measure historical
+strategy returns, and this repository does not supply a backtesting system.
+
+## The usual bit
+
+This software is for educational purposes only. Do not risk money you are afraid
+to lose. **USE THE SOFTWARE AT YOUR OWN RISK. THE AUTHORS AND ALL AFFILIATES ASSUME
+NO RESPONSIBILITY FOR YOUR TRADING RESULTS.**
+
+See [LICENSE](LICENSE) for the full terms.
+
+Come say jambo in [Telegram](https://t.me/+9F0CZj8emLc2YTY0).
